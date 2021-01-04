@@ -28,7 +28,7 @@ public class Ball {
         bodyDef.position.set(x, y);
 
         this.ballBody = world.createBody(bodyDef);
-        ballBody.setLinearDamping(6f);  // How fast ball stops moving stops.
+        ballBody.setLinearDamping(10f);  // How fast ball stops moving stops.
 
         CircleShape ball = new CircleShape();
         ball.setRadius(size);
