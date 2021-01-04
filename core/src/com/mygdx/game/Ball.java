@@ -28,7 +28,7 @@ public class Ball {
         bodyDef.position.set(x, y);
 
         this.ballBody = world.createBody(bodyDef);
-        ballBody.setLinearDamping(2f);
+        ballBody.setLinearDamping(10f);
 
         CircleShape ball = new CircleShape();
         ball.setRadius(size);
@@ -46,17 +46,18 @@ public class Ball {
     }
 
     public void move() {
+        int speed = 40;
         if (Gdx.input.isKeyPressed(Input.Keys.D)) {
-            this.ballBody.applyLinearImpulse(5, 0, this.x, this.y, true);
+            this.ballBody.applyLinearImpulse(speed, 0, this.x, this.y, true);
         }
         if (Gdx.input.isKeyPressed(Input.Keys.A)) {
-            this.ballBody.applyLinearImpulse(-5, 0, this.x, this.y, true);
+            this.ballBody.applyLinearImpulse(-speed, 0, this.x, this.y, true);
         }
         if (Gdx.input.isKeyPressed(Input.Keys.W)) {
-            this.ballBody.applyLinearImpulse(0, 5, this.x, this.y, true);
+            this.ballBody.applyLinearImpulse(0, speed, this.x, this.y, true);
         }
         if (Gdx.input.isKeyPressed(Input.Keys.S)) {
-            this.ballBody.applyLinearImpulse(0, -5, this.x, this.y, true);
+            this.ballBody.applyLinearImpulse(0, -speed, this.x, this.y, true);
         }
     }
 
