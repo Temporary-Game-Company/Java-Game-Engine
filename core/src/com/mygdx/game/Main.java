@@ -17,7 +17,7 @@ import com.badlogic.gdx.math.Matrix4;
 import java.util.ArrayList;
 import java.util.Random;
 
-public class TheGame extends ApplicationAdapter {
+public class Main extends ApplicationAdapter {
     ShapeRenderer shape;  // Used to render white shapes.
     ArrayList<Ball> balls = new ArrayList<>();
     Paddle paddle;
@@ -25,23 +25,21 @@ public class TheGame extends ApplicationAdapter {
     int randomSize;
     World world = new World(new Vector2(0,0), true);
     private OrthographicCamera camera;
+    private SpriteBatch batch;
     Box2DDebugRenderer debugRenderer;
 
     @Override
     public void create () {
-        camera = new OrthographicCamera(1280, 720);
-        camera.setToOrtho(false);
-        camera.update();
+        camera = new OrthographicCamera();
+        camera.setToOrtho(false, 1280, 720);
 
         Box2D.init();
         this.debugRenderer = new Box2DDebugRenderer();
-        System.out.println(camera.combined);
-        System.out.println("camera.combined");
 
         shape = new ShapeRenderer();
         paddle = new Paddle(50, 50);
 
-        for (int i = 0; i < 40; i++) {
+        for (int i = 0; i < 10; i++) {
             randomSize = r.nextInt(100);
             balls.add(new Ball(
                     r.nextInt(Gdx.graphics.getWidth()-randomSize*2)+randomSize,
@@ -51,6 +49,7 @@ public class TheGame extends ApplicationAdapter {
                     r.nextInt(15) + 1,
                     world)
             );
+            System.out.println(balls);
         }
     }
 
@@ -63,7 +62,7 @@ public class TheGame extends ApplicationAdapter {
         paddle.draw(shape);
         for (Ball ball : balls) {
             ball.checkCollision(paddle);
-            ball.update();
+            ball.move();
             ball.draw(shape);
         }
         shape.end();

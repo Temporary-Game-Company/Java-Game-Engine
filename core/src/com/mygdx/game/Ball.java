@@ -1,13 +1,11 @@
 package com.mygdx.game;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
-import com.badlogic.gdx.physics.box2d.Body;
-import com.badlogic.gdx.physics.box2d.BodyDef;
+import com.badlogic.gdx.physics.box2d.*;
 import com.badlogic.gdx.physics.box2d.BodyDef.BodyType;
-import com.badlogic.gdx.physics.box2d.CircleShape;
-import com.badlogic.gdx.physics.box2d.World;
 
 public class Ball {
     int x;
@@ -16,7 +14,8 @@ public class Ball {
     int xSpeed;
     int ySpeed;
     Color color = Color.WHITE;
-    BodyDef ballDef = new BodyDef();
+    BodyDef bodyDef = new BodyDef();
+    Body ballBody;
 
     public Ball(int x, int y, int size, int xSpeed, int ySpeed, World world) {
         this.x = x;
@@ -24,27 +23,45 @@ public class Ball {
         this.size = size;
         this.xSpeed = xSpeed;
         this.ySpeed = ySpeed;
-        ballDef.type = BodyType.DynamicBody;
-        ballDef.position.set(x, y);
-        Body ballBody = world.createBody(ballDef);
+
+        bodyDef.type = BodyType.DynamicBody;
+        bodyDef.position.set(x, y);
+
+        this.ballBody = world.createBody(bodyDef);
+        ballBody.setLinearDamping(2f);
+
         CircleShape ball = new CircleShape();
         ball.setRadius(size);
+        fixBall(ball, ballBody);
+        ball.dispose();
+
     }
 
-    public void update() {
-        this.x += xSpeed;
-        this.y += ySpeed;
-        if (this.x < this.size || this.x > Gdx.graphics.getWidth() - this.size) {
-            xSpeed = -xSpeed;
+    public void fixBall(CircleShape ball, Body ballBody) {
+        FixtureDef fixtureDef = new FixtureDef();
+        fixtureDef.shape = ball;
+
+        Fixture fixture = ballBody.createFixture(fixtureDef);
+
+    }
+
+    public void move() {
+        if (Gdx.input.isKeyPressed(Input.Keys.D)) {
+            this.ballBody.applyLinearImpulse(5, 0, this.x, this.y, true);
         }
-        if (this.y < this.size || this.y > Gdx.graphics.getHeight() - this.size) {
-            ySpeed = -ySpeed;
+        if (Gdx.input.isKeyPressed(Input.Keys.A)) {
+            this.ballBody.applyLinearImpulse(-5, 0, this.x, this.y, true);
+        }
+        if (Gdx.input.isKeyPressed(Input.Keys.W)) {
+            this.ballBody.applyLinearImpulse(0, 5, this.x, this.y, true);
+        }
+        if (Gdx.input.isKeyPressed(Input.Keys.S)) {
+            this.ballBody.applyLinearImpulse(0, -5, this.x, this.y, true);
         }
     }
 
     public void draw(ShapeRenderer shape) {
         shape.setColor(color);
-        ballDef.position.set(x, y);
     }
 
     public void checkCollision(Paddle paddle) {
