@@ -28,7 +28,7 @@ public class Ball {
         bodyDef.position.set(x, y);
 
         this.ballBody = world.createBody(bodyDef);
-        ballBody.setLinearDamping(10f);
+        ballBody.setLinearDamping(7f);
 
         CircleShape ball = new CircleShape();
         ball.setRadius(size);
