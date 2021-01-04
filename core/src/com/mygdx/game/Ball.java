@@ -28,7 +28,7 @@ public class Ball {
         bodyDef.position.set(x, y);
 
         this.ballBody = world.createBody(bodyDef);
-        ballBody.setLinearDamping(7f);
+        ballBody.setLinearDamping(8f);
 
         CircleShape ball = new CircleShape();
         ball.setRadius(size);
@@ -46,7 +46,7 @@ public class Ball {
     }
 
     public void move() {
-        int speed = 40;
+        int speed = 200;
         if (Gdx.input.isKeyPressed(Input.Keys.D)) {
             this.ballBody.applyLinearImpulse(speed, 0, this.x, this.y, true);
         }
