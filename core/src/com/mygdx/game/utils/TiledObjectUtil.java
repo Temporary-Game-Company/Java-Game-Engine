@@ -10,19 +10,23 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.*;
 import com.badlogic.gdx.physics.box2d.BodyDef.BodyType;
 
-public class TiledObjectUtil {
-    private static float ppt = 0;
+import static com.mygdx.game.utils.Constants.PPM;
 
-    public static void buildShapes(World world, TiledMap map, float pixels) {
-        ppt = pixels;
+public class TiledObjectUtil {
+    private static float ppt = 0;  /**/
+
+    public static void buildShapes(World world, TiledMap map) {
+        ppt = PPM;
         MapObjects objects = map.getLayers().get("Object Layer 1").getObjects();
         System.out.println("here1");
         System.out.println(objects.getCount());
 
         // Array<Body> bodies = new Array<Body>();
-        for (MapObject object: objects) {
+        for (MapObject object: objects) { /*Iterates through objects in collision layer of tiled map.*/
             System.out.println(object.getClass());
             Shape shape;
+
+            /*Checks for object type and creates a shape for it.*/
             if (object instanceof TextureMapObject) {
                 continue;
             }
@@ -42,10 +46,11 @@ public class TiledObjectUtil {
                 continue;
             }
 
+            /*Attaches a body to the shape and creates a fixture.*/
             BodyDef bodyDef = new BodyDef();
             bodyDef.type = BodyType.StaticBody;
             Body body = world.createBody(bodyDef);
-            body.createFixture(shape, 1f);
+            body.createFixture(shape, 1f);  /*For collision.*/
 
             // bodies.add(body);
             shape.dispose();
@@ -55,6 +60,7 @@ public class TiledObjectUtil {
         // return bodies;
     }
 
+    /*Returns a chain shape of the tiled map polyline.*/
     private static Shape createPolyLine(PolylineMapObject object) {
         float[] vertices = object.getPolyline().getTransformedVertices();
         Vector2[] worldVertices = new Vector2[vertices.length/2];
@@ -70,6 +76,7 @@ public class TiledObjectUtil {
         return chain;
     }
 
+    /*Returns a polygon shape of the tiled map polygon.*/
     private static Shape createPolygon(PolygonMapObject object) {
         PolygonShape polygonShape = new PolygonShape();
         float[] vertices = object.getPolygon().getTransformedVertices();
@@ -84,6 +91,7 @@ public class TiledObjectUtil {
         return polygonShape;
     }
 
+    /*Returns a rectangle shape of the tiled map rectangle.*/
     private static Shape createRectangle(RectangleMapObject object) {
         Rectangle rectangle = object.getRectangle();
         PolygonShape polygonShape = new PolygonShape();
@@ -92,6 +100,7 @@ public class TiledObjectUtil {
         return polygonShape;
     }
 
+    /*Returns a circle shape of the tiled map circle.*/
     private static Shape createCircle(CircleMapObject object) {
         Circle circle = object.getCircle();
         CircleShape circleShape = new CircleShape();
