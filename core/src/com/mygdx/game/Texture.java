@@ -13,9 +13,9 @@ public class Texture {
     Vector2 position;
     float scale;
 
-    TextureAtlas textureAtlas;
-    Sprite sprite;
-    TextureRegion textureRegion;
+    private TextureAtlas textureAtlas;
+    private Sprite sprite;
+    private TextureRegion textureRegion;
 
     public Texture(Vector2 position, String filePath, String name, float scale) {
         this.position = position;
@@ -39,6 +39,14 @@ public class Texture {
         batch.begin();
         sprite.draw(batch);
         batch.end();
+    }
+
+    public Vector2 getSize () {
+        return new Vector2(this.sprite.getWidth(), this.sprite.getHeight());
+    }
+
+    public void dispose () {
+        this.textureAtlas.dispose();
     }
 
 }

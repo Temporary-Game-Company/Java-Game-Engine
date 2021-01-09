@@ -12,17 +12,15 @@ import static com.mygdx.game.utils.Constants.PPM;
 
 public class Rectangle {
     Vector2 position;
-    float w;
-    float h;
+    Vector2 size;
     float speed;
     float friction;
     BodyDef bodyDef = new BodyDef();
     Body rectangleBody;
 
-    public Rectangle(Vector2 position, float w, float h, float friction, boolean isStatic, World world) {
-        this.position = new Vector2((position.x+w/2)/PPM, (position.y+h/2)/PPM);
-        this.w = w/PPM/2;
-        this.h = h/PPM/2;
+    public Rectangle(Vector2 position, Vector2 size, float friction, boolean isStatic, World world) {
+        this.position = new Vector2((position.x+size.x/2)/PPM, (position.y+size.y/2)/PPM);
+        this.size = size.scl(1/PPM/2);
         this.speed = speed/PPM;
         this.friction = friction;
 
@@ -39,7 +37,7 @@ public class Rectangle {
         this.rectangleBody.setLinearDamping(1f);
 
         PolygonShape rect = new PolygonShape();
-        rect.setAsBox(this.w, this.h);
+        rect.setAsBox(this.size.x, this.size.y);
 
         this.rectangleBody.createFixture(rect, 0f);
         this.rectangleBody.getFixtureList().get(0).setFriction(friction);
