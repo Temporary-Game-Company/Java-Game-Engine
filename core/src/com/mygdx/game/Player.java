@@ -16,14 +16,14 @@ public class Player {
     public Player (Vector2 position, World world) {
         this.position = position;
 
-        playerTexture = new Texture(this.position, "Spritesheets/Player.atlas", "001", 0.30f);
+        playerTexture = new Texture(this.position, "Spritesheets/Test.atlas", "JebIdle001", 1f);
         body = new Rectangle(this.position, playerTexture.sprite.getWidth(), playerTexture.sprite.getHeight(), 1f, false, world);
     }
 
     public void update () {
         this.position = body.rectangleBody.getPosition().scl(PPM);
 
-        playerTexture.update(new Vector2(this.position.x-playerTexture.sprite.getWidth()/2, this.position.y-playerTexture.sprite.getHeight()/2));
+        playerTexture.update(new Vector2(this.position.x, this.position.y));
         System.out.println(position);
     }
 

@@ -31,7 +31,7 @@ public class Texture {
 
     public void update(Vector2 position) {
         this.position = position;
-        this.sprite.setPosition(this.position.x, this.position.y);
+        this.sprite.setPosition(this.position.x-this.sprite.getWidth()/2, this.position.y-this.sprite.getHeight()/2);
 
     }
 
