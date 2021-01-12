@@ -7,8 +7,6 @@ import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Vector2;
 
-import static com.mygdx.game.utils.Constants.PPM;
-
 /**
  * Used to place a texture.
  */

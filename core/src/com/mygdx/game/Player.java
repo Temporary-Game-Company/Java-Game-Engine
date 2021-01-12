@@ -49,8 +49,12 @@ public class Player {
             this.body.rectangleBody.applyLinearImpulse(new Vector2(-speed, 0), this.position, true);
         }
         if (Gdx.input.isKeyJustPressed(Input.Keys.SPACE)) { /*Jump*/
-            this.body.rectangleBody.applyForceToCenter(new Vector2(0, 400), true);
+            this.body.rectangleBody.applyForceToCenter(new Vector2(0, 2000), true);
         }
+    }
+
+    public Vector2 getPosition() {
+        return this.position;
     }
 
     /*Disposes of player things*/

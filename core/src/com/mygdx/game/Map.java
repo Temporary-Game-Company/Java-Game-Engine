@@ -7,8 +7,6 @@ import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.physics.box2d.World;
 import com.mygdx.game.utils.TiledObjectUtil;
 
-import static com.mygdx.game.utils.Constants.PPM;
-
 public class Map {
     /* Declarations.*/
     TiledMap map;
