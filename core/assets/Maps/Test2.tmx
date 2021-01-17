@@ -1,16 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.4" tiledversion="1.4.3" orientation="orthogonal" renderorder="right-up" width="150" height="50" tilewidth="16" tileheight="16" infinite="0" nextlayerid="3" nextobjectid="4">
+<map version="1.4" tiledversion="1.4.3" orientation="orthogonal" renderorder="right-up" width="150" height="50" tilewidth="16" tileheight="16" infinite="0" nextlayerid="4" nextobjectid="14">
  <tileset firstgid="1" source="Placeholders.tsx"/>
  <layer id="1" name="Tile Layer 1" width="150" height="50">
   <data encoding="base64" compression="zlib">
-   eJzt3EtqAkEARdEin41E3UhiNpLo/rdgTQLioCf2pSCcA8XraYFcaAd9GGMc5zlYu+N+zXO2duf9+33BHh57BXvQKwp6RUGvKOgVBb2ioFcU9IqCXlHQKwp6RUGvKOgVBb2ioFcU9IqCXlHQKwp6RUGvKOgVBb2ioFcU9IqCXlHQKwp6RUGvKOgVBb2ioFcU9IqCXlHQKwp6RUGvKNS9epnndZ63hfse3Ittda8+xvrviJ+Ce7Gt7tXnWP8d8e/gXmyre/Uzz+88l4V7De7FNu+DFLwPUtArCnpFQa8oPPbK2mf3/nnl/0v2f+398w20hrkT
+   eJzt3FlqwzAUhlHhthvpsJEOi2gfOyyiXX0lTCGvof5lRT4HxH0NxHyJL8ZLKeWqnmvT3Gje1HNbz+tSykedn8U0/zff6rX0UOdjWSdsoXXq5WTCFv46pVdsSa9I0CsS9IoEvSJBr/payrovnN1MvbqE7+y9nq+9P0QHM/XqKN/ZJZipV4xjpl4xDr0iQa9I0CsS9IoEvSJBr0jQKxL0igS9IkGvSNArEvSKBL0iQa9I0CsS9IoEvZrPCM/569V8RnjOX69I0Kv+RvidStOr/kb4nUrTKxL0igS9IkGvSEj3qt37jPC+Z/pK96pdr/f13O04dbi/dK/a9fpcz9OOM/2/8Qj7qHOle9V2NXu/oz69KzrCPupc7gdJcD9Igl6RoFck6BUJp736XvbfYZpzzJ9l7dQI+wBzrtl2L79rgr37
   </data>
  </layer>
- <objectgroup id="2" name="Object Layer 1">
+ <objectgroup id="2" name="Solids">
   <object id="1" x="352" y="624" width="544" height="64"/>
-  <object id="2" x="0" y="768" width="2400" height="32"/>
-  <object id="3" x="32" y="768">
-   <polyline points="0,0 0,-736 2336,-736 2336,0 704,-624"/>
+  <object id="6" x="32" y="32">
+   <polyline points="0,0 2336,0 2336,736 0,736 0,-16"/>
   </object>
+  <object id="7" x="784" y="160" width="32" height="32"/>
+  <object id="8" x="1440" y="144" width="32" height="32"/>
+  <object id="9" x="1456" y="528" width="32" height="32"/>
+  <object id="10" x="1840" y="480" width="32" height="32"/>
+  <object id="11" x="1264" y="656" width="32" height="32"/>
+ </objectgroup>
+ <objectgroup id="3" name="Spawn Location">
+  <object id="13" x="1218.18" y="284.848" width="227.273" height="227.273"/>
  </objectgroup>
 </map>

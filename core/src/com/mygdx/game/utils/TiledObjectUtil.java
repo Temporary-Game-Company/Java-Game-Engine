@@ -1,5 +1,7 @@
 package com.mygdx.game.utils;
 
+import com.badlogic.gdx.maps.MapLayer;
+import com.badlogic.gdx.maps.MapLayers;
 import com.badlogic.gdx.maps.MapObject;
 import com.badlogic.gdx.maps.MapObjects;
 import com.badlogic.gdx.maps.objects.*;
@@ -10,52 +12,59 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.*;
 import com.badlogic.gdx.physics.box2d.BodyDef.BodyType;
 
-import static com.mygdx.game.utils.Constants.PPM;
+import static com.mygdx.game.utils.Constants.*;
 
 public class TiledObjectUtil {
     private static float ppt = 0;  /**/
 
     public static void buildShapes(World world, TiledMap map) {
         ppt = PPM;
-        MapObjects objects = map.getLayers().get("Object Layer 1").getObjects();
-        System.out.println("here1");
-        System.out.println(objects.getCount());
+        MapLayers layers = map.getLayers();
 
-        // Array<Body> bodies = new Array<Body>();
-        for (MapObject object: objects) { /*Iterates through objects in collision layer of tiled map.*/
-            System.out.println(object.getClass());
-            Shape shape;
+        for (MapLayer layer: layers) {
 
-            /*Checks for object type and creates a shape for it.*/
-            if (object instanceof TextureMapObject) {
-                continue;
-            }
-            if (object instanceof PolylineMapObject) {
-                shape = createPolyLine((PolylineMapObject) object);
-            }
-            else if (object instanceof PolygonMapObject) {
-                shape = createPolygon((PolygonMapObject) object);
-            }
-            else if (object instanceof RectangleMapObject) {
-                shape = createRectangle((RectangleMapObject) object);
-            }
-            else if (object instanceof CircleMapObject) {
-                shape = createCircle((CircleMapObject) object);
-            }
-            else {
+            if (layer.getName().equals("Spawn Location")) {
                 continue;
             }
 
-            /*Attaches a body to the shape and creates a fixture.*/
-            BodyDef bodyDef = new BodyDef();
-            bodyDef.type = BodyType.StaticBody;
-            Body body = world.createBody(bodyDef);
-            body.createFixture(shape, 1f);  /*For collision.*/
+            MapObjects objects = layer.getObjects();
 
-            // bodies.add(body);
-            shape.dispose();
+            // Array<Body> bodies = new Array<Body>();
+            for (MapObject object: objects) { /*Iterates through objects in collision layer of tiled map.*/
+                Shape shape;
 
+                /*Checks for object type and creates a shape for it.*/
+                if (object instanceof TextureMapObject) {
+                    continue;
+                }
+                if (object instanceof PolylineMapObject) {
+                    shape = createPolyLine((PolylineMapObject) object);
+                } else if (object instanceof PolygonMapObject) {
+                    shape = createPolygon((PolygonMapObject) object);
+                } else if (object instanceof RectangleMapObject) {
+                    shape = createRectangle((RectangleMapObject) object);
+                } else if (object instanceof CircleMapObject) {
+                    shape = createCircle((CircleMapObject) object);
+                } else {
+                    continue;
+                }
 
+                /*Attaches a body to the shape and creates a fixture.*/
+                BodyDef bodyDef = new BodyDef();
+                bodyDef.type = BodyType.StaticBody;
+                Body body = world.createBody(bodyDef);
+                body.setUserData(layer.getName());
+                FixtureDef fixtureDef = new FixtureDef();
+                fixtureDef.friction = 1f;
+                fixtureDef.filter.categoryBits = BIT_WALL;
+                fixtureDef.filter.maskBits = -1;
+                fixtureDef.shape = shape;
+                body.createFixture(fixtureDef);  /*For collision.*/
+
+                // bodies.add(body);
+                shape.dispose();
+
+            }
         }
         // return bodies;
     }

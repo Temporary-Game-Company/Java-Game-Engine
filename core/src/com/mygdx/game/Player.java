@@ -1,12 +1,11 @@
 package com.mygdx.game;
 
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.World;
+import com.mygdx.game.managers.InputManager;
 
-import static com.mygdx.game.utils.Constants.PPM;
+import static com.mygdx.game.utils.Constants.*;
 
 /**
  * Creates the main character, the player, Jeb.
@@ -15,21 +14,22 @@ import static com.mygdx.game.utils.Constants.PPM;
 public class Player {
     /*Declarations.*/
     Vector2 position;
-    Rectangle body;
+    Rectangle hitBox;
     private Texture playerTexture;
 
     /*Initializes Player Instance.*/
-    public Player (Vector2 position, World world) {
-        this.position = position;
+    public Player (World world, Map map) {
+        this.position = map.getSpawnLocation();
 
         /*Initializes the player's texture and hit box.*/
         playerTexture = new Texture(this.position, "Images/Spritesheets/Test.atlas", "JebIdle001", 1f);
-        body = new Rectangle(this.position, playerTexture.getSize(), 1f, false, world);
+        hitBox = new Rectangle(this.position, playerTexture.getSize(), 0f, 50f, false, world, BIT_PLAYER, BIT_WALL);
+
     }
 
     /*Updates player's position.*/
     public void update () {
-        this.position = body.rectangleBody.getPosition().scl(PPM);
+        this.position = hitBox.body.getPosition().scl(PPM);
 
         /*Updates texture's position.*/
         playerTexture.update(new Vector2(this.position.x, this.position.y));
@@ -41,16 +41,20 @@ public class Player {
     }
 
     /*Checks for input and moves player.*/
-    public void move (float speed) {
-        if (Gdx.input.isKeyPressed(Input.Keys.D)) { /*Right*/
-            this.body.rectangleBody.applyLinearImpulse(new Vector2(speed, 0), this.position, true);
+    public void move (float speed, InputManager inputManager) {
+        if (inputManager.right) { /*Right*/
+            this.hitBox.body.applyLinearImpulse(new Vector2(speed, 0), this.position, true);
         }
-        if (Gdx.input.isKeyPressed(Input.Keys.A)) { /*Left*/
-            this.body.rectangleBody.applyLinearImpulse(new Vector2(-speed, 0), this.position, true);
+        if (inputManager.left) { /*Left*/
+            this.hitBox.body.applyLinearImpulse(new Vector2(-speed, 0), this.position, true);
         }
-        if (Gdx.input.isKeyJustPressed(Input.Keys.SPACE)) { /*Jump*/
-            this.body.rectangleBody.applyForceToCenter(new Vector2(0, 2000), true);
+        if (inputManager.down) { /*Right*/
+            this.hitBox.body.applyLinearImpulse(new Vector2(0, -speed), this.position, true);
         }
+        if (inputManager.up) { /*Left*/
+            this.hitBox.body.applyLinearImpulse(new Vector2(0, speed), this.position, true);
+        }
+
     }
 
     public Vector2 getPosition() {

@@ -15,8 +15,6 @@ public class GameStateManager {
 
     private Stack<GameState> states;
 
-    private float deltaTime;
-
     /*Enumerates States*/
     public enum State {
         SPLASH,

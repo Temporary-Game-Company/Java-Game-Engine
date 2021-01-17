@@ -1,5 +1,6 @@
 package com.mygdx.game.states;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.Stage;
@@ -16,13 +17,15 @@ public abstract class GameState extends Stage {
     protected SpriteBatch batch;
     protected Camera camera;
 
-    InputManager inputManager;
+    InputManager inputManager = new InputManager();
 
     protected GameState(GameStateManager gameStateManager) {
         this.gameStateManager = gameStateManager;
         this.app = gameStateManager.application();
         batch = app.getBatch();
         camera = app.getCamera();
+
+        Gdx.input.setInputProcessor(inputManager);
     }
 
 

@@ -37,8 +37,8 @@ public class Camera {
         Vector3 position = camera.position;  /*Gets the camera position.*/
 
         /*Sets position but moves slower. (Interpolation)*/
-        position.x = position.x + (centerPosition.x-position.x) * 0.2f;
-        position.y = position.y + (centerPosition.y-position.y) * 0.2f;
+        position.x = position.x + (centerPosition.x-position.x) * 0.05f;
+        position.y = position.y + (centerPosition.y-position.y) * 0.05f;
 
         /*Updates camera with position.*/
         camera.update();
