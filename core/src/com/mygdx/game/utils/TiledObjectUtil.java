@@ -15,7 +15,7 @@ import com.badlogic.gdx.physics.box2d.BodyDef.BodyType;
 import static com.mygdx.game.utils.Constants.*;
 
 public class TiledObjectUtil {
-    private static float ppt = 0;  /**/
+    private static float ppt = 0;
 
     public static void buildShapes(World world, TiledMap map) {
         ppt = PPM;
