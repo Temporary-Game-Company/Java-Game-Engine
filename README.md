@@ -8,4 +8,4 @@
 > - Tiled used for maps
 
 > Example test with debug textures:  
-![Example](https://github.com/Temporary-Game-Company/Jebja/tree/master/Images/Example.png)
+![Example](https://github.com/Temporary-Game-Company/Jebja/blob/master/Images/Example.png)
