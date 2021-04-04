@@ -2,7 +2,7 @@
 ### Flexible open-source game engine written in Java 
 #### Winter break personal project.
 
-> **Gradle Used**
+> **Gradle Used**  
 > Libraries Needed: LibGDX, Box2D, LWJGL  
 > Software: Tiled, TexturePacker (Comes with LibGDX)  
 > Launched through DesktopLauncher.java
