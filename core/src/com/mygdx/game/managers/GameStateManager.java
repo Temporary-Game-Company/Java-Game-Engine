@@ -41,6 +41,7 @@ public class GameStateManager {
         states.peek().render();
     }
 
+    /*Disposes of game states*/
     public void dispose() {
         for(GameState gameState : states) {
             gameState.dispose();

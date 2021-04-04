@@ -53,6 +53,10 @@ public class Texture {
         return new Vector2(this.sprite.getWidth(), this.sprite.getHeight());
     }
 
+    public void setSize (Vector2 size) {
+        this.sprite.setSize(size.x, size.y);
+    }
+
     /*Disposes of texture things.*/
     public void dispose () {
         this.textureAtlas.dispose();

@@ -1,9 +1,16 @@
 
 test.png
-size: 512,256
+size: 2048,2048
 format: RGBA8888
 filter: Nearest,Nearest
 repeat: none
+Press Enter!
+  rotate: false
+  xy: 2, 166
+  size: 1920, 1080
+  orig: 1920, 1080
+  offset: 0, 0
+  index: -1
 Press Start
   rotate: false
   xy: 2, 2

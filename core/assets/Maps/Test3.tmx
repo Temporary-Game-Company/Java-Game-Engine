@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.4" tiledversion="1.4.3" orientation="orthogonal" renderorder="right-down" width="150" height="50" tilewidth="16" tileheight="16" infinite="0" nextlayerid="2" nextobjectid="1">
+ <tileset firstgid="1" source="Placeholders.tsx"/>
+ <layer id="1" name="Tile Layer 1" width="150" height="50">
+  <data encoding="base64" compression="zlib">
+   eJzt2lFuwkAMhOGIlovQcpEWLgLl/lfoWuIBrSIlIqzH2P8nzWvQkklsIaYJAAAAAN7Trng+Wj5b9lu/yAfqM0XIoXDs/CN6pT5XhPwUzm4a9756vO4+wFm9cymcUb06tHy1fLcc71Gf1TvXlr+W28bv8h2N6pU9r78tp5bzPahjVK/65/X24usjtlG9Mn23ji++PuLy7BWzsI6RvTLV99eqvHvFjlWDd6/YsWrw7hU7Vg2je2XYseqhVxhB0St29/wUvWJ3z0/RK3b3/Dx6ZdixalH1ih0rN1Wv2LFyU/WKHSs3r14ZZmEdyl4xC/NS9opZmJdnrwyzsAZ1r5iFOal7dXb6XPjy7pXhnZVfhF7xzsonQq94Z+Wj6JXhN4fcVL0y/MchL3qFESL1it09j0i9YnfPI1Kv2N3zUPbKzM3CpSCmvkvKezY3C5eypntEm/6eeZubhUtZ0z2iTX/PvM399r6UNd0j2vT3LKpn+kd0AQAA2/wDz6AELA==
+  </data>
+ </layer>
+</map>

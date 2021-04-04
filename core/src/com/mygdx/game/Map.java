@@ -21,6 +21,7 @@ public class Map {
         this.map = new TmxMapLoader().load(filePath);
         tiledMapRenderer = new OrthogonalTiledMapRenderer(this.map);
 
+
         /*Builds the shapes in the map's collision layer*/
         TiledObjectUtil.buildShapes(world, map);
     }

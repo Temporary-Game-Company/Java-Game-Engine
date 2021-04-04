@@ -15,8 +15,9 @@ public class SplashState extends GameState {
 
     public SplashState(GameStateManager gameStateManager) {
         super(gameStateManager);
-        texture = new Texture(new Vector2(0,0),"Images/Spritesheets/test.atlas", "Press Start", 6.7f);
+        texture = new Texture(new Vector2(0,0),"Images/Spritesheets/test.atlas", "Press Enter!", 6.7f);
 
+        texture.setSize(new Vector2(Gdx.graphics.getWidth(), Gdx.graphics.getHeight()));
     }
 
     @Override
