@@ -1,4 +1,4 @@
-# Java Game Engine  
+# Java Game Engine (Open Source)  
 ## Winter Break Personal Project  
 **Flexible game engine written using Java**
 
