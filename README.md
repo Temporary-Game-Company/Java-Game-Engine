@@ -1,4 +1,5 @@
-# Java Game Engine - Winter Break Personal Project  
+# Java Game Engine  
+## Winter Break Personal Project  
 **Flexible game engine written using Java**
 
 > Libraries Needed: LibGDX, Box2D, LWJGL  
