@@ -41,7 +41,7 @@ public class PlayState extends GameState {
         this.debugRenderer = new Box2DDebugRenderer();
 
         /* Initializes Map and the Player.*/
-        map = new Map("Maps/Test2.tmx", world);
+        map = new Map("Maps/Example Map.tmx", world);
         player = new Player (world, map);
 
 
