@@ -1,5 +1,5 @@
 # Java Game Engine - Winter Break Personal Project  
-####Flexible game engine written using Java
+**Flexible game engine written using Java**
 
 > Libraries Needed: LibGDX, Box2D, LWJGL  
 > Software: Tiled, TexturePacker (Comes with LibGDX) 
