@@ -1,5 +1,5 @@
 # Java Game Engine  
-### Flexible open source game engine written in Java 
+### Flexible open-source game engine written in Java 
 #### Winter break personal project.
 
 > Libraries Needed: LibGDX, Box2D, LWJGL  
